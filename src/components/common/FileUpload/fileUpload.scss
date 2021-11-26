@@ -1,5 +1,11 @@
+[type="file"] {
+  height: 0;
+  overflow: hidden;
+  width: 0;
+}
+
 [type="file"] + label {
-  background: #f15d22;
+  background: #00BCD4;
   border: none;
   border-radius: 5px;
   color: #fff;
@@ -16,7 +22,7 @@
   vertical-align: middle;
 
   &:hover {
-    background-color: darken(#f15d22, 10%);
+    background-color: darken(#CDDC39, 10%);
   }
 
   &.btn-1 {
@@ -58,7 +64,7 @@
   }
 
   &.btn-3 {
-    background-color: #ee6d9e;
+    background-color: #673AB7;
     border-radius: 0;
     overflow: hidden;
 
@@ -84,7 +90,7 @@
     }
 
     &:hover {
-      background-color: darken(#ee6d9e, 30%);
+      background-color: darken(#673AB7, 30%);
 
       span {
         transform: translateY(300%);
