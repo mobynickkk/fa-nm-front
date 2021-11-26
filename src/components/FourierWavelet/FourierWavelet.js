@@ -3,7 +3,7 @@ import FormGroup from "@mui/material/FormGroup";
 import Container from "@mui/material/Container";
 import Button from "@mui/material/Button";
 import ToggleTransformType from "./ToggleTransformType";
-import FileUpload from "../common/FileUpload";
+import FileUpload from "../common/FileUpload/FileUpload";
 
 const FourierWavelet = () => {
     const [file, setFile] = useState(null);
