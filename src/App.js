@@ -20,7 +20,7 @@ const App = () => {
 
   return (
       <ThemeProvider theme={theme}>
-        <FourierWavelet />
+        <FourierWavelet calculateTransform={obj => console.log(obj)} />
       </ThemeProvider>
   );
 }

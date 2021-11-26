@@ -5,7 +5,7 @@ import Button from "@mui/material/Button";
 import ToggleTransformType from "./ToggleTransformType";
 import FileUpload from "../common/FileUpload/FileUpload";
 
-const FourierWavelet = () => {
+const FourierWavelet = ({ calculateTransform }) => {
     const [file, setFile] = useState(null);
     const [transformType, setTransformType] = useState("fourier");
 
@@ -17,7 +17,10 @@ const FourierWavelet = () => {
             <FormGroup>
                 <FileUpload title={'Загрузите csv файл'} setFile={setFile} />
                 <ToggleTransformType transformType={transformType} setTransformType={setTransformType} />
-                <Button variant="outlined">Вычислить</Button>
+                <Button onClick={event => {
+                    event.preventDefault();
+                    calculateTransform({file, transformType});
+                }} variant="outlined">Вычислить</Button>
             </FormGroup>
         </Container>
     );

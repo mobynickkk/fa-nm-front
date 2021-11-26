@@ -9,7 +9,7 @@ const ToggleTransformType = ({ transformType, setTransformType }) => {
             color="primary"
             value={transformType}
             exclusive
-            onChange={setTransformType}
+            onChange={(event, value) => setTransformType(value)}
         >
             <ToggleButton value="fourier">Фурье</ToggleButton>
             <ToggleButton value="wavelet">Вейвлет</ToggleButton>
