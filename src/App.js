@@ -1,7 +1,7 @@
 import React from "react";
-import FourierWavelet from "./components/FourierWavelet/FourierWavelet";
 import createTheme from "@mui/material/styles/createTheme";
 import ThemeProvider from "@mui/material/styles/ThemeProvider";
+import Root from "./components/Root";
 
 const App = () => {
   const theme = createTheme({
@@ -20,7 +20,7 @@ const App = () => {
 
   return (
       <ThemeProvider theme={theme}>
-        <FourierWavelet calculateTransform={obj => console.log(obj)} />
+        <Root />
       </ThemeProvider>
   );
 }
