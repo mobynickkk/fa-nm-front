@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import FourierWavelet from "./FourierWavelet/FourierWavelet";
 import Backdrop from "@mui/material/Backdrop";
 import CircularProgress from "@mui/material/CircularProgress";
-import {getSpectrogram, showLoading} from "../backend/utils";
+import { getSpectrogram, showLoading } from "../backend/utils";
 import Snackbar from "@mui/material/Snackbar";
 import Alert from "@mui/material/Alert";
 
@@ -15,7 +15,6 @@ const Root = () => {
         setErrorOpen(true);
         setErrorText(text);
     }
-    const showSpectrogram = () => console.log(11);
 
     const onClose = (event, reason) => {
         if (reason === 'clickaway') {
@@ -29,7 +28,7 @@ const Root = () => {
             <main>
                 <h1 style={{textAlign: 'center'}}>Фурье- и Вейвлет-Анализ</h1>
 
-                <FourierWavelet calculateTransform={getSpectrogram(showBackdrop, showError, showSpectrogram)} />
+                <FourierWavelet calculateTransform={getSpectrogram(showBackdrop, showError)} />
 
             </main>
             <Backdrop

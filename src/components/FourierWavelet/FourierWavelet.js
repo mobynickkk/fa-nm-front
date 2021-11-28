@@ -1,31 +1,34 @@
 import React, {useMemo, useState} from "react";
-import Button from "@mui/material/Button";
 import "./fourierWavelet.css";
 import Stepper from "@mui/material/Stepper";
 import Step from "@mui/material/Step";
 import StepLabel from "@mui/material/StepLabel";
 import FourierWaveletForm from "./FourierWaveletForm";
-import Typography from "@mui/material/Typography";
-import Box from "@mui/material/Box";
+import FourierWaveletGraphs from "./FourierWaveletGraphs";
+import {EMPTY_GRAPHS, parseData, validateInput} from "./utils";
+import ArrowBackIosIcon from '@mui/icons-material/ArrowBackIos';
+import ArrowForwardIosIcon from '@mui/icons-material/ArrowForwardIos';
+import BottomNavigation from "@mui/material/BottomNavigation";
+import BottomNavigationAction from "@mui/material/BottomNavigationAction";
+import Paper from "@mui/material/Paper";
 
-const FourierWavelet = ({calculateTransform}) => {
+const FourierWavelet = ({ calculateTransform }) => {
     const [activeStep, setActiveStep] = useState(0);
+    const [graphs, setGraphs] = useState(EMPTY_GRAPHS);
 
     const steps = useMemo(() => ["Введите данные для анализа", "Результаты"], []);
 
-    const handleNext = () => {
-        setActiveStep((prevActiveStep) => prevActiveStep + 1);
-    };
-    const handleBack = () => {
-        setActiveStep((prevActiveStep) => prevActiveStep - 1);
-    };
-    const handleReset = () => {
-        setActiveStep(0);
-    };
+    const getGraphs = calculateTransform({
+        url: '127.0.0.1:5000',
+        headers: { 'Content-Type': 'form/multipart' },
+        parseDataCallback: parseData,
+        checkDataCallback: validateInput,
+        onSuccessCallback: setGraphs
+    })
 
     return (
         <>
-            <Stepper activeStep={activeStep}>
+            <Stepper sx={{ marginLeft: '20vh', marginRight: '20vh' }} activeStep={activeStep}>
                 {steps.map((label, index) => {
                     return (
                         <Step key={label}>
@@ -35,39 +38,22 @@ const FourierWavelet = ({calculateTransform}) => {
                 })}
             </Stepper>
             {activeStep === 0 ? (
-                <FourierWaveletForm calculateTransform={calculateTransform}/>
+                <FourierWaveletForm calculateTransform={getGraphs}/>
             ) : (
-                <p>hi</p>
+                <FourierWaveletGraphs graphs={graphs} />
             )}
-            {activeStep === steps.length ? (
-                <>
-                    <Typography sx={{mt: 2, mb: 1}}>
-                        All steps completed - you&apos;re finished
-                    </Typography>
-                    <Box sx={{display: 'flex', flexDirection: 'row', pt: 2}}>
-                        <Box sx={{flex: '1 1 auto'}}/>
-                        <Button onClick={handleReset}>Reset</Button>
-                    </Box>
-                </>
-            ) : (
-                <>
-                    <Box sx={{display: 'flex', flexDirection: 'row', pt: 2}}>
-                        <Button
-                            color="inherit"
-                            disabled={activeStep === 0}
-                            onClick={handleBack}
-                            sx={{mr: 1}}
-                        >
-                            Back
-                        </Button>
-                        <Box sx={{flex: '1 1 auto'}}/>
-
-                        <Button onClick={handleNext}>
-                            {activeStep === steps.length - 1 ? 'Finish' : 'Next'}
-                        </Button>
-                    </Box>
-                </>
-            )}
+            <Paper sx={{ position: 'fixed', width: '100%', bottom: 0, left: 0, right: 0 }} elevation={3}>
+                <BottomNavigation
+                    showLabels
+                    value={activeStep}
+                    onChange={(event, newValue) => {
+                        setActiveStep(newValue);
+                    }}
+                >
+                    <BottomNavigationAction label="Ввод данных" icon={<ArrowBackIosIcon />} />
+                    <BottomNavigationAction label="Графики" icon={<ArrowForwardIosIcon />} />
+                </BottomNavigation>
+            </Paper>
         </>
     );
 }
