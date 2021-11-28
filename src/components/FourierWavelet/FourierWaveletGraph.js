@@ -2,7 +2,7 @@ import React from "react";
 import Skeleton from "@mui/material/Skeleton";
 import Slider from "@mui/material/Slider";
 
-const FourierWaveletGraph = ({ item, main }) => {
+const FourierWaveletGraph = ({ item, main, onChange }) => {
     return (
         <>
             <h3>{item.title}</h3>
@@ -31,6 +31,9 @@ const FourierWaveletGraph = ({ item, main }) => {
                     marks
                     min={item.minFreq}
                     max={item.maxFreq}
+                    onChangeCommitted={(event, value) => {
+                        onChange(value);
+                    }}
                 />
                 )}
         </>

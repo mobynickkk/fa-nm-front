@@ -19,7 +19,7 @@ const FourierWavelet = ({ calculateTransform }) => {
     const steps = useMemo(() => ["Введите данные для анализа", "Результаты"], []);
 
     const getGraphs = calculateTransform({
-        url: '127.0.0.1:5000',
+        url: '127.0.0.1:5000/graphs',
         headers: { 'Content-Type': 'form/multipart' },
         parseDataCallback: parseData,
         checkDataCallback: validateInput,
@@ -40,7 +40,7 @@ const FourierWavelet = ({ calculateTransform }) => {
             {activeStep === 0 ? (
                 <FourierWaveletForm calculateTransform={getGraphs}/>
             ) : (
-                <FourierWaveletGraphs graphs={graphs} />
+                <FourierWaveletGraphs graphs={graphs} setGraphs={setGraphs} calculateTransform={calculateTransform} />
             )}
             <Paper sx={{ position: 'fixed', width: '100%', bottom: 0, left: 0, right: 0 }} elevation={3}>
                 <BottomNavigation

@@ -17,7 +17,12 @@ export const EMPTY_GRAPHS = {
     target: {
         title: 'Восстановленный сигнал',
         src: null
-    }
+    },
+    values: {
+        source: [],
+        target: []
+    },
+    dispersion: 0.5
 }
 
 export const validateInput = data => {
