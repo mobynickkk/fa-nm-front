@@ -27,7 +27,7 @@ export const EMPTY_GRAPHS = {
 
 export const validateInput = data => {
     return data.file
-        && ['waves', 'csv'].includes(data.file.split('.').pop())
+        && ['waves', 'csv'].includes(data.file.name.split('.').pop())
         && data.transformType
         && ['fourier', 'wavelet'].includes(data.transformType);
 }

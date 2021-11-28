@@ -19,8 +19,7 @@ const FourierWavelet = ({ calculateTransform }) => {
     const steps = useMemo(() => ["Введите данные для анализа", "Результаты"], []);
 
     const getGraphs = calculateTransform({
-        url: '127.0.0.1:5000/graphs',
-        headers: { 'Content-Type': 'form/multipart' },
+        url: 'http://127.0.0.1:5000/graphs/',
         parseDataCallback: parseData,
         checkDataCallback: validateInput,
         onSuccessCallback: setGraphs

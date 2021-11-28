@@ -1,7 +1,7 @@
 export const showLoading = showLoadingFunc => mode => showLoadingFunc(mode);
 
 export const getSpectrogram = (showLoading, showError) => params => async data => {
-    if (!params.chekDataCallback(data)) {
+    if (!params.checkDataCallback(data)) {
         showError('Неправильно заполнены данные');
         return;
     }
@@ -14,7 +14,7 @@ export const getSpectrogram = (showLoading, showError) => params => async data =
         });
         showLoading(false);
         if (!response.ok) {
-            showError(response.text());
+            showError(await response.text());
         } else {
             params.onSuccessCallback(await response.json());
         }
