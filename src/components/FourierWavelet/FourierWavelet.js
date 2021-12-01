@@ -19,7 +19,7 @@ const FourierWavelet = ({ calculateTransform }) => {
     const steps = useMemo(() => ["Введите данные для анализа", "Результаты"], []);
 
     const getGraphs = calculateTransform({
-        url: 'http://127.0.0.1:5000/graphs/',
+        url: 'http://fa-back.herokuapp.com/graphs/',
         parseDataCallback: parseData,
         checkDataCallback: validateInput,
         onSuccessCallback: setGraphs
