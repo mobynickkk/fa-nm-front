@@ -4,15 +4,19 @@ import FourierWaveletGraph from "./FourierWaveletGraph";
 import Typography from "@mui/material/Typography";
 
 const FourierWaveletGraphs = ({ graphs, setGraphs, calculateTransform }) => {
+    const handleFreqResponse = graphs => {
+        setGraphs(prevGraphs => ({ ...graphs, main: prevGraphs.main, source: prevGraphs.source }));
+    }
+
     const getGraphs = calculateTransform({
         url: 'https://fa-back.herokuapp.com/freq',
         headers: { 'Content-Type': 'application/json' },
         checkDataCallback: () => true,
-        onSuccessCallback: setGraphs
+        onSuccessCallback: handleFreqResponse
     })
 
     const handleFreqChange = value => {
-        getGraphs({ values: graphs.values.source, maxFrequency: value })
+        getGraphs({ values: graphs.values, maxFrequency: value })
     }
 
     return (

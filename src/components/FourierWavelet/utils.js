@@ -18,10 +18,7 @@ export const EMPTY_GRAPHS = {
         title: 'Восстановленный сигнал',
         src: null
     },
-    values: {
-        source: [],
-        target: []
-    },
+    values: [],
     dispersion: 0.5
 }
 
