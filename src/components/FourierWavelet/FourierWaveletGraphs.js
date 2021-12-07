@@ -9,7 +9,7 @@ const FourierWaveletGraphs = ({ graphs, setGraphs, calculateTransform }) => {
     }
 
     const getGraphs = calculateTransform({
-        url: 'https://fa-back.herokuapp.com/freq',
+        url: 'https://fa-back.herokuapp.com/freq/',
         headers: { 'Content-Type': 'application/json' },
         checkDataCallback: () => true,
         onSuccessCallback: handleFreqResponse
