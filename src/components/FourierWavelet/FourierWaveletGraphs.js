@@ -20,7 +20,7 @@ const FourierWaveletGraphs = ({ graphs, setGraphs, calculateTransform }) => {
     }
 
     return (
-        <Grid container sx={{ marginBottom: '15vh' }} spacing={{ xs: 2, md: 10 }} className="graphs" >
+        <Grid container sx={{ marginBottom: '15vh' }} spacing={{ xs: 2, md: 5 }} className="graphs" >
             <Grid item xs={6}>
                 <FourierWaveletGraph item={graphs.main} main onChange={handleFreqChange} />
             </Grid>

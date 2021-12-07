@@ -14,7 +14,7 @@ const ToggleTransformType = ({ transformType, setTransformType }) => {
             onChange={(event, value) => setTransformType(value)}
         >
             <ToggleButton value="fourier">Фурье</ToggleButton>
-            <ToggleButton value="wavelet">Вейвлет</ToggleButton>
+            <ToggleButton value="wavelet" disabled>Вейвлет</ToggleButton>
         </ToggleButtonGroup>
     );
 }

@@ -6,8 +6,8 @@ import StepLabel from "@mui/material/StepLabel";
 import FourierWaveletForm from "./FourierWaveletForm";
 import FourierWaveletGraphs from "./FourierWaveletGraphs";
 import {EMPTY_GRAPHS, parseData, validateInput} from "./utils";
-import ArrowBackIosIcon from '@mui/icons-material/ArrowBackIos';
-import ArrowForwardIosIcon from '@mui/icons-material/ArrowForwardIos';
+import InputIcon from '@mui/icons-material/Input';
+import TimelineIcon from '@mui/icons-material/Timeline';
 import BottomNavigation from "@mui/material/BottomNavigation";
 import BottomNavigationAction from "@mui/material/BottomNavigationAction";
 import Paper from "@mui/material/Paper";
@@ -49,8 +49,8 @@ const FourierWavelet = ({ calculateTransform }) => {
                         setActiveStep(newValue);
                     }}
                 >
-                    <BottomNavigationAction label="Ввод данных" icon={<ArrowBackIosIcon />} />
-                    <BottomNavigationAction label="Графики" icon={<ArrowForwardIosIcon />} />
+                    <BottomNavigationAction label="Ввод данных" icon={<InputIcon />} />
+                    <BottomNavigationAction label="Графики" icon={<TimelineIcon />} />
                 </BottomNavigation>
             </Paper>
         </>
